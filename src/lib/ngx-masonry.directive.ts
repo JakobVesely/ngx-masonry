@@ -75,9 +75,11 @@ export class NgxMasonryDirective implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private imageLoaded(image?: HTMLImageElement) {
-    this.images.delete(image);
-    if (this.images.size === 0) {
-      this.parent.add(this);
+    if (this.useLoadingImages) {
+      this.images.delete(image);
+      if (this.images.size === 0) {
+        this.parent.add(this);
+      }
     }
   }
 
